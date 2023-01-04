@@ -1,15 +1,24 @@
-var robot = require("robotjs");
-
-
+const robot = require("robotjs");
+const notifier = require('node-notifier');
+const path = require('path');
+const time=new Date().toISOString();
 setTimeout(() => {
-    console.info(new Date().toISOString())
+    notifier.notify({
+        title: 'Timer Start',
+        icon: path.join(__dirname, 'coulson.png'),
+        message:time
+      });
     robot.mouseClick();
-    }, 10000);
+    }, 5000);
     
     
 
 setInterval(() => {
-console.info(new Date().toISOString())
+    notifier.notify({
+        title: 'Timer Running',
+        icon: path.join(__dirname, 'coulson.png'),
+        message:time
+      });
 robot.mouseClick();
 }, 120000);
 
